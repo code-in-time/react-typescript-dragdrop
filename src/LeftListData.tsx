@@ -8,10 +8,19 @@ interface IProps {
 
 const addRow = (data: IFormDataList) => {
 
+  const onDragStart = (e: any, v:IFormData) => {
+    e.dataTransfer.setData("text", JSON.stringify(v));
+    console.log('onDragStart', [e, JSON.stringify(v)])
+  
+  }
+
   return (
     data.map((v: IFormData) => {
       return (
-        <tr draggable="true">
+        <tr
+          draggable="true"
+          onDragStart={(e) => onDragStart(e, v)}
+        >
           <td>{v.id}</td>
           <td>{v.name}</td>
           <td>{v.email}</td>

@@ -32,12 +32,29 @@ const tableStyle: CSSProperties = {
   minHeight: '100px'
 };
 
+const onDrop = (e: any) => {
+  e.preventDefault();
+  const data = e.dataTransfer.getData("text");
+  const dataObj = JSON.parse(data) as IFormData;
+  console.log('ondrop', dataObj)
+
+}
+
+const onDragOver = (e: any) => {
+  e.preventDefault();
+  console.log('onDragOver')
+
+}
 
 
 
 const RightArea: React.FC<IProps> = ({ data }) => {
   return (
-    <table style={tableStyle}>
+    <table
+      style={tableStyle}
+      onDrop={onDrop}
+      onDragOver={onDragOver}
+    >
       <tr>
         <th>ID</th>
         <th>Name</th>
