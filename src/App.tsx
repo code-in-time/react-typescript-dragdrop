@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import InputFormArea from './InputFormArea';
+
+import { useState } from 'react';
+import { IFormDataList, IFormData } from './model';
+
+const defaultSata: IFormData = {
+  id: Math.random(),
+  name: '1', 
+  email: 'a', 
+  phone: 'q'}
 
 function App() {
+
+  const [formData, setFormData] = useState<IFormDataList>([])
+
+  const addToFormData = (data: IFormData) => {
+
+    setFormData((d: IFormDataList) => {
+      return [...d, data]
+    })
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InputFormArea  addToFormData={addToFormData}/>
     </div>
   );
 }
