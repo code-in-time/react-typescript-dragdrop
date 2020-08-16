@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, CSSProperties } from 'react'
 import { IFormDataList, IFormData } from './model';
 
 interface IProps {
@@ -24,12 +24,20 @@ const addRow = (data: IFormDataList) => {
   )
 }
 
+const tableStyle: CSSProperties = {
+  position: 'fixed',
+  bottom: '0',
+  right: '0',
+  border: '1px solid red',
+  minHeight: '100px'
+};
 
 
 
-const LeftListData: React.FC<IProps> = ({ data }) => {
+
+const RightArea: React.FC<IProps> = ({ data }) => {
   return (
-    <table>
+    <table style={tableStyle}>
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -41,4 +49,4 @@ const LeftListData: React.FC<IProps> = ({ data }) => {
   )
 }
 
-export default LeftListData
+export default RightArea

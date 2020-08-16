@@ -4,6 +4,7 @@ import InputFormArea from './InputFormArea';
 import { useState } from 'react';
 import { IFormDataList, IFormData } from './model';
 import LeftListData from './LeftListData';
+import RightArea from './RightArea';
 
 const defaultSata: IFormData = {
   id: Math.random(),
@@ -26,7 +27,8 @@ function App() {
   return (
     <div className="App">
       <InputFormArea  addToFormData={addToFormData}/>
-      <LeftListData data={formData}/>
+      <LeftListData data={formData} />
+      <RightArea data={formData}/>
     </div>
   );
 }
